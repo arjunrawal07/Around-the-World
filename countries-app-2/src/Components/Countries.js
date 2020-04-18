@@ -1,29 +1,43 @@
 import React, { Component } from "react";
 import "./Countries.css";
+import { Link } from "react-router-dom";
 
 const axios = require("axios").default;
-let baseURL = "https://countries-api-first.herokuapp.com/";
+
 class Countries extends Component {
   constructor() {
+    console.log("constructor");
     super();
     this.state = {
-      countries: {},
+      countries: [],
     };
   }
   componentDidMount() {
+    console.log("componentDidMount");
+    let baseURL = "https://countries-api-first.herokuapp.com/";
     axios
       .get(baseURL)
       .then((res) => {
         this.setState({ countries: res.data });
+        // console.log(this.state.countries[0].capital);
       })
       .catch((error) => {
         console.log(error);
       });
   }
   render() {
-    console.log(this.state.countries);
-    //   console.log(this.state.countries.name){
-    return <div>Countries go here</div>;
+    console.log("render");
+    let { countries } = this.state;
+    let list = countries.map((country, i) => {
+      return (
+        <div key={i}>
+          <p>
+            <Link to={"countries/" + country.name}>{country.name}</Link>
+          </p>
+        </div>
+      );
+    });
+    return <div>{list}</div>;
   }
 }
 //       <div className="Countries">

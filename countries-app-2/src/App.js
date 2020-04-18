@@ -35,14 +35,15 @@ class App extends React.Component {
           <Switch>
             <Route
               path="/countries"
-              render={(routerProps) => (
-                <Countries
-                  setcountriesList={this.setcountriesList}
-                  {...routerProps}
-                  {...this.state}
-                />
-              )}
+              exact
+              component={Countries}
+              // render={(routerProps) => (
+              //   <Countries
+              //     setcountriesList={this.setcountriesList}
+              //     {...routerProps}
+              //     {...this.state}
             />
+            )} />
           </Switch>
         </div>
       </Router>
