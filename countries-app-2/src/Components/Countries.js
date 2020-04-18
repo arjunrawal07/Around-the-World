@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Countries.css";
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import Profile from "./Profile";
 
 const axios = require("axios").default;
 
@@ -30,9 +31,9 @@ class Countries extends Component {
     let { countries } = this.state;
     let list = countries.map((country, i) => {
       return (
-        <div key={i}>
+        <div className="Countries" key={i}>
           <p>
-            <Link to={"countries/" + country.name}>{country.name}</Link>
+            <Link to={"/countries/" + country.name}>{country.name}</Link>
           </p>
         </div>
       );

@@ -1,16 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Countries from "../src/Components/Countries";
-
+import Profile from "./Components/Profile";
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      countriesList: null,
+      profiles: [],
     };
+    this.setProfile = this.setProfile.bind(this);
   }
-  setcountriesList(countriesList) {
-    this.setState({ countriesList: countriesList });
+  setProfile(profiles) {
+    this.setState({ profiles: profiles });
   }
   render() {
     return (
@@ -44,6 +45,16 @@ class App extends React.Component {
               //     {...this.state}
             />
             )} />
+            <Route
+              path="/countries/:name"
+              render={(routerProps) => (
+                <Profile
+                  setProfile={this.setProfile}
+                  {...routerProps}
+                  {...this.state}
+                />
+              )}
+            />
           </Switch>
         </div>
       </Router>
