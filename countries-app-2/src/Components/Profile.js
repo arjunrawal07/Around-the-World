@@ -11,42 +11,62 @@ class Profile extends React.Component {
     axios
       .get(profileURL)
       .then((res) => {
-        let newProfile = res.data[0];
+        let newProfile = res.data.map((profile) => ({
+          name: `${profile.name}`,
+          capital: `${profile.capital}`,
+          population: `${profile.population}`,
+          currencies: [
+            `${profile.currencies[0].name}`,
+            `${profile.currencies[0].code}`,
+            `${profile.currencies[0].symbol}`,
+          ],
+          languages: [
+            `${profile.languages[0].name}`,
+            `${profile.languages[1]}`,
+            `${profile.languages[2]}`,
+          ],
+        }));
         this.props.setProfile(newProfile);
+        console.log(newProfile);
       })
       .catch((error) => {
         console.log(error);
       });
   }
   render() {
-    console.log(this.props.profiles);
-    // let { profiles } = this.state;
-    // let dashboard = profiles.map((profile, i) => {
-    return (
-      <div className="profile">
-        <h1>Name: {this.props.match.params.name}</h1>
-        <p>
-          <span>Capital: </span>
-          {this.props.profiles.capital}
-        </p>
-        <p>
-          <span>Population: </span>
-          {this.props.profiles.population}
-        </p>
-        {/* <p>
-          <span>Currencies: </span>
-          {this.props.profiles.currencies[0].code}
-          {this.props.profiles.currencies[0].name}
-          {this.props.profiles.currencies[0].symbol}
-        </p>
-        <p>
-          <span>Languages: </span>
-          {this.props.profiles.languages[0].name}
-          {this.props.profiles.languages[1].name}
-          {this.props.profiles.languages[2].name}
-        </p> */}
-      </div>
-    );
+    console.log(this.props);
+    let dashboard = this.props.profiles.map((profile, i) => {
+      return (
+        <div className="profile" key={i}>
+          <h1>Name: {profile.name}</h1>
+          <p>
+            <span>Capital: </span>
+            {profile.capital}
+          </p>
+          <p>
+            <span>Population: </span>
+            {profile.population}
+          </p>
+          <p>
+            <span>Currencies: </span> <br />
+            <ul>
+              <li> Name: {profile.currencies[0]}</li>
+              <li> Code: {profile.currencies[1]} </li>
+              <li> Symbol: {profile.currencies[2]}</li>
+            </ul>
+          </p>
+          <p>
+            <span>Languages: </span>
+            <ul>
+              <li>{profile.languages[0]}</li>
+              <li>{profile.languages[1]} </li>
+              <li>{profile.languages[2]}</li>
+            </ul>
+          </p>
+        </div>
+      );
+    });
+    return <div>{dashboard}</div>;
   }
 }
 
