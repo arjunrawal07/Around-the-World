@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Countries.css";
 import { Route, Link } from "react-router-dom";
-import Profile from "./Profile";
 
 const axios = require("axios").default;
 

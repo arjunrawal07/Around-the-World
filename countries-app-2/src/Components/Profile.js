@@ -1,6 +1,9 @@
 import React from "react";
+import Box from "@material-ui/core/Box";
+import { List } from "@material-ui/core";
 const axios = require("axios").default;
 let baseURL = "https://countries-api-first.herokuapp.com/countries/";
+
 class Profile extends React.Component {
   componentDidMount() {
     console.log("componentDidMount");
@@ -37,33 +40,42 @@ class Profile extends React.Component {
     console.log(this.props);
     let dashboard = this.props.profiles.map((profile, i) => {
       return (
-        <div className="profile" key={i}>
-          <h1>Name: {profile.name}</h1>
-          <p>
-            <span>Capital: </span>
-            {profile.capital}
-          </p>
-          <p>
-            <span>Population: </span>
-            {profile.population}
-          </p>
-          <p>
-            <span>Currencies: </span> <br />
-            <ul>
-              <li> Name: {profile.currencies[0]}</li>
-              <li> Code: {profile.currencies[1]} </li>
-              <li> Symbol: {profile.currencies[2]}</li>
-            </ul>
-          </p>
-          <p>
-            <span>Languages: </span>
-            <ul>
-              <li>{profile.languages[0]}</li>
-              <li>{profile.languages[1]} </li>
-              <li>{profile.languages[2]}</li>
-            </ul>
-          </p>
-        </div>
+        <Box
+          color="primary.main"
+          bgcolor="warning.main"
+          border={1}
+          borderColor="primary.main"
+          borderRadius={16}
+          maxWidth="sm"
+        >
+          <List key={i}>
+            <h1>Name: {profile.name}</h1>
+            <p>
+              <span>Capital: </span>
+              {profile.capital}
+            </p>
+            <p>
+              <span>Population: </span>
+              {profile.population}
+            </p>
+            <p>
+              <span>Currencies: </span> <br />
+              <ul>
+                <li> Name: {profile.currencies[0]}</li>
+                <li> Code: {profile.currencies[1]} </li>
+                <li> Symbol: {profile.currencies[2]}</li>
+              </ul>
+            </p>
+            <p>
+              <span>Languages: </span>
+              <ul>
+                <li>{profile.languages[0]}</li>
+                <li>{profile.languages[1]} </li>
+                <li>{profile.languages[2]}</li>
+              </ul>
+            </p>
+          </List>
+        </Box>
       );
     });
     return <div>{dashboard}</div>;
