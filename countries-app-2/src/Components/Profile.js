@@ -25,7 +25,7 @@ class Profile extends React.Component {
           ],
           languages: [
             `${profile.languages[0].name}`,
-            `${profile.languages[1]}`,
+            `${profile.languages[1].name}`,
             `${profile.languages[2]}`,
           ],
         }));
@@ -41,6 +41,7 @@ class Profile extends React.Component {
     let dashboard = this.props.profiles.map((profile, i) => {
       return (
         <Box
+          key={i}
           color="primary.main"
           bgcolor="warning.main"
           border={1}
@@ -48,7 +49,7 @@ class Profile extends React.Component {
           borderRadius={16}
           maxWidth="sm"
         >
-          <List key={i}>
+          <List>
             <h1>Name: {profile.name}</h1>
             <p>
               <span>Capital: </span>
@@ -58,22 +59,18 @@ class Profile extends React.Component {
               <span>Population: </span>
               {profile.population}
             </p>
-            <p>
-              <span>Currencies: </span> <br />
-              <ul>
-                <li> Name: {profile.currencies[0]}</li>
-                <li> Code: {profile.currencies[1]} </li>
-                <li> Symbol: {profile.currencies[2]}</li>
-              </ul>
-            </p>
-            <p>
-              <span>Languages: </span>
-              <ul>
-                <li>{profile.languages[0]}</li>
-                <li>{profile.languages[1]} </li>
-                <li>{profile.languages[2]}</li>
-              </ul>
-            </p>
+            <span>Currencies: </span> <br />
+            <ul>
+              <li> Name: {profile.currencies[0]}</li>
+              <li> Code: {profile.currencies[1]} </li>
+              <li> Symbol: {profile.currencies[2]}</li>
+            </ul>
+            <span>Languages: </span>
+            <ul>
+              <li>{profile.languages[0]}</li>
+              <li>{profile.languages[1]}</li>
+              <li>{profile.languages[2]}</li>
+            </ul>
           </List>
         </Box>
       );

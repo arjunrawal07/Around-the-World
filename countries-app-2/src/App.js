@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Countries from "../src/Components/Countries";
 import Profile from "./Components/Profile";
+import Create from "./Components/Create";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +27,7 @@ class App extends React.Component {
                 <Link to="/countries">Full List of Country Profiles</Link>
               </li>
               <li>
-                <Link to="/users">Users</Link>
+                <Link to="/country">Create Your Own Country</Link>
               </li>
             </ul>
           </nav>
@@ -34,17 +35,7 @@ class App extends React.Component {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
-            <Route
-              path="/countries"
-              exact
-              component={Countries}
-              // render={(routerProps) => (
-              //   <Countries
-              //     setcountriesList={this.setcountriesList}
-              //     {...routerProps}
-              //     {...this.state}
-            />
-            )} />
+            <Route path="/countries" exact component={Countries} />
             <Route
               path="/countries/:name"
               render={(routerProps) => (
@@ -55,6 +46,7 @@ class App extends React.Component {
                 />
               )}
             />
+            <Route path="/country" exact component={Create} />
           </Switch>
         </div>
       </Router>
