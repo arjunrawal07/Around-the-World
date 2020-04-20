@@ -1,9 +1,23 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import { List, Button } from "@material-ui/core";
+import {
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  Input,
+  InputLabel,
+} from "@material-ui/core";
 const axios = require("axios").default;
 let baseURL = "https://countries-api-first.herokuapp.com/countries/";
+
 class Profile extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      capital: "",
+    };
+  }
   componentDidMount() {
     console.log("componentDidMount");
     const name = this.props.match.params.name;
@@ -31,7 +45,13 @@ class Profile extends React.Component {
         console.log(error);
       });
   }
-
+  handleChange = (event) => {
+    if (event.target.id == "capital-input") {
+      this.setState({
+        capital: event.target.value,
+      });
+    }
+  };
   deleteData = () => {
     const name = this.props.match.params.name;
     const profileURL = `${baseURL}${name}`;
@@ -44,6 +64,21 @@ class Profile extends React.Component {
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+
+  updateData = (event) => {
+    const name = this.props.match.params.name;
+    const profileURL = `${baseURL}${name}`;
+    axios
+      .put(profileURL, {
+        capital: this.state.capital,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -65,6 +100,16 @@ class Profile extends React.Component {
             <p>
               <span>Capital: </span>
               {profile.capital}
+              <FormControl>
+                <form onSubmit={this.updateData}>
+                  <InputLabel htmlFor="capital-input">Capital City</InputLabel>
+                  <Input
+                    id="capital-input"
+                    aria-describedby="my-helper-text"
+                    onChange={this.handleChange}
+                  />{" "}
+                </form>
+              </FormControl>
             </p>
             <p>
               <span>Population: </span>
@@ -83,6 +128,9 @@ class Profile extends React.Component {
           </List>
           <Button type="submit" variant="contained" onClick={this.deleteData}>
             DELETE Country Profile
+          </Button>
+          <Button type="submit" variant="contained" onClick={this.updateData}>
+            Update Data
           </Button>
         </Box>
       );
