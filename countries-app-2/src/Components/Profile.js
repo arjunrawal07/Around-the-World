@@ -15,7 +15,11 @@ class Profile extends React.Component {
   constructor() {
     super();
     this.state = {
+      name: "",
       capital: "",
+      population: 0,
+      currencies: "",
+      languages: "",
     };
   }
   componentDidMount() {
@@ -32,7 +36,7 @@ class Profile extends React.Component {
           capital: `${profile.capital}`,
           population: `${profile.population}`,
           currencies: [
-            `${profile.currencies[0].name}`,
+            `${profile.currencies[0]}`,
             `${profile.currencies[0].code}`,
             `${profile.currencies[0].symbol}`,
           ],
@@ -80,6 +84,7 @@ class Profile extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+    // location.reload(true);
   };
 
   render() {
@@ -100,16 +105,6 @@ class Profile extends React.Component {
             <p>
               <span>Capital: </span>
               {profile.capital}
-              <FormControl>
-                <form onSubmit={this.updateData}>
-                  <InputLabel htmlFor="capital-input">Capital City</InputLabel>
-                  <Input
-                    id="capital-input"
-                    aria-describedby="my-helper-text"
-                    onChange={this.handleChange}
-                  />{" "}
-                </form>
-              </FormControl>
             </p>
             <p>
               <span>Population: </span>
@@ -129,6 +124,59 @@ class Profile extends React.Component {
           <Button type="submit" variant="contained" onClick={this.deleteData}>
             DELETE Country Profile
           </Button>
+          <form onSubmit={this.updateData}>
+            <FormControl>
+              <InputLabel htmlFor="name-input">Country Name</InputLabel>
+              <Input
+                id="name-input"
+                className="name-input"
+                aria-describedby="my-helper-text"
+                onChange={this.handleChange}
+              />{" "}
+              <FormControl>
+                <InputLabel htmlFor="capital-input">Capital City</InputLabel>
+                <Input
+                  id="capital-input"
+                  className="capital-input"
+                  aria-describedby="my-helper-text"
+                  onChange={this.handleChange}
+                />{" "}
+              </FormControl>
+              <FormControl>
+                <InputLabel htmlFor="population-input">
+                  Country's Population
+                </InputLabel>
+                <Input
+                  id="population-input"
+                  className="population-input"
+                  aria-describedby="my-helper-text"
+                  onChange={this.handleChange}
+                />{" "}
+              </FormControl>
+              <FormControl>
+                <InputLabel htmlFor="currency-input">
+                  Country's Currency
+                </InputLabel>
+                <Input
+                  id="currency-input"
+                  className="currencies-input"
+                  aria-describedby="my-helper-text"
+                  onChange={this.handleChange}
+                />{" "}
+              </FormControl>
+              <FormControl>
+                <InputLabel htmlFor="languages-input">
+                  Country's Languages{" "}
+                </InputLabel>
+                <Input
+                  id="languages-input"
+                  className="languages-input"
+                  aria-describedby="my-helper-text"
+                  onChange={this.handleChange}
+                />{" "}
+              </FormControl>
+            </FormControl>
+          </form>
           <Button type="submit" variant="contained" onClick={this.updateData}>
             Update Data
           </Button>
