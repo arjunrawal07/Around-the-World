@@ -1,9 +1,8 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import { List } from "@material-ui/core";
+import { List, Button } from "@material-ui/core";
 const axios = require("axios").default;
 let baseURL = "https://countries-api-first.herokuapp.com/countries/";
-
 class Profile extends React.Component {
   componentDidMount() {
     console.log("componentDidMount");
@@ -23,11 +22,7 @@ class Profile extends React.Component {
             `${profile.currencies[0].code}`,
             `${profile.currencies[0].symbol}`,
           ],
-          languages: [
-            `${profile.languages[0].name}`,
-            `${profile.languages[1].name}`,
-            `${profile.languages[2]}`,
-          ],
+          languages: [`${profile.languages[0].name}`],
         }));
         this.props.setProfile(newProfile);
         console.log(newProfile);
@@ -36,6 +31,22 @@ class Profile extends React.Component {
         console.log(error);
       });
   }
+
+  deleteData = () => {
+    const name = this.props.match.params.name;
+    const profileURL = `${baseURL}${name}`;
+    // const data = this.props.profiles;
+    axios
+      .delete(profileURL)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   render() {
     console.log(this.props);
     let dashboard = this.props.profiles.map((profile, i) => {
@@ -67,11 +78,12 @@ class Profile extends React.Component {
             </ul>
             <span>Languages: </span>
             <ul>
-              <li>{profile.languages[0]}</li>
-              <li>{profile.languages[1]}</li>
-              <li>{profile.languages[2]}</li>
+              <li>{profile.languages}</li>
             </ul>
           </List>
+          <Button type="submit" variant="contained" onClick={this.deleteData}>
+            DELETE Country Profile
+          </Button>
         </Box>
       );
     });
