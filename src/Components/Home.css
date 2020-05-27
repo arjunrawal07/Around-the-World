@@ -1,0 +1,16 @@
+.title {
+  text-align: center;
+  font-family: "Crimson Text", serif;
+  background-color: lavenderblush;
+}
+
+.subheading {
+  font-family: "Work Sans", sans-serif;
+}
+
+.mainPhoto {
+  border: 2px solid orange;
+  height: 100vh;
+  background-image: url("https://i.imgur.com/UTBPlST.jpg");
+  background-size: cover;
+}

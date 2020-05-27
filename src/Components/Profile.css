@@ -1,3 +1,16 @@
 .profile {
   border: 2px solid orange;
 }
+
+.profilePage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+}
+.box {
+  border: 2px solid blue;
+  width: 300px;
+  margin-right: 20px;
+}

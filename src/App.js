@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Countries from "../src/Components/Countries";
+import Home from "./Components/Home";
+import Countries from "./Components/Countries";
 import Profile from "./Components/Profile";
 import Create from "./Components/Create";
+import "./App.css";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,24 +19,21 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Around The World In A Few Keystrokes!</Link>
-              </li>
-              <li>
-                <Link to="/countries">Full List of Country Profiles</Link>
-              </li>
-              <li>
-                <Link to="/country">Create Your Own Country</Link>
-              </li>
-            </ul>
+        <div className="home">
+          <nav className="navbar">
+            <div className="tab">
+              <Link to="/">Home</Link>
+            </div>
+            <div className="tab">
+              <Link to="/countries">Full List of Country Profiles</Link>
+            </div>
+            <div className="tab">
+              <Link to="/country">Create Your Own Country</Link>
+            </div>
           </nav>
-          <h1>Welcome to Countries API!</h1>
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+
           <Switch>
+            <Route path="/" exact component={Home} />
             <Route path="/countries" exact component={Countries} />
             <Route
               path="/countries/:name"

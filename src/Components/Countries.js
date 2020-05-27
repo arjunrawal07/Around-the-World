@@ -27,18 +27,22 @@ class Countries extends Component {
       });
   }
   render() {
-    console.log("render");
     let { countries } = this.state;
     let list = countries.map((country, i) => {
       return (
         <div className="Countries" key={i}>
-          <p>
-            <Link to={"/countries/" + country.name}>{country.name}</Link>
+          <p className="text">
+            <Link
+              to={"/countries/" + country.name}
+              style={{ textDecoration: "none" }}
+            >
+              {country.name}
+            </Link>
           </p>
         </div>
       );
     });
-    return <div>{list}</div>;
+    return <div className="list">{list}</div>;
   }
 }
 
