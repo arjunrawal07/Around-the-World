@@ -31,10 +31,10 @@ class Profile extends React.Component {
           population: `${profile.population}`,
           currencies: [
             `${profile.currencies[0]}`,
-            `${profile.currencies[0].code}`,
-            `${profile.currencies[0].symbol}`,
+            `${profile.currencies[1]}`,
+            `${profile.currencies[2]}`,
           ],
-          languages: [`${profile.languages[0].name}`],
+          languages: [`${profile.languages}`],
         }));
         this.props.setProfile(newProfile);
         console.log(newProfile);
@@ -107,14 +107,18 @@ class Profile extends React.Component {
                 <li>{profile.languages}</li>
               </ul>
             </ul>
-            <Button
-              className="delete"
-              type="submit"
-              variant="contained"
-              onClick={this.deleteData}
-            >
-              DELETE Country Profile
-            </Button>
+            <div className="deleteButton">
+              <Button
+                className="delete"
+                type="submit"
+                variant="contained"
+                onClick={this.deleteData}
+                color="secondary"
+                position="center"
+              >
+                DELETE Country Profile
+              </Button>
+            </div>
           </div>
           <div className="update">
             <form onSubmit={this.updateData}>
@@ -170,9 +174,16 @@ class Profile extends React.Component {
                 </FormControl>
               </FormControl>
             </form>
-            <Button type="submit" variant="contained" onClick={this.updateData}>
-              Update Data
-            </Button>
+            <div className="updateButton">
+              <Button
+                color="primary"
+                type="submit"
+                variant="contained"
+                onClick={this.updateData}
+              >
+                Update Country Information
+              </Button>
+            </div>
           </div>
         </div>
       );

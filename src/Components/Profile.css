@@ -10,7 +10,16 @@
   align-content: space-around;
 }
 .box {
-  border: 2px solid blue;
+  border: 5px solid rgb(207, 95, 255);
   width: 300px;
   margin-right: 20px;
+}
+
+.deleteButton {
+  margin: 0 50px;
+}
+
+.update {
+  text-align: center;
+  border: 5px solid #ffa500;
 }
