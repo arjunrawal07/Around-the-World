@@ -20,14 +20,12 @@
   width: 300px;
   height: 500px;
   margin-right: 20px;
-  padding: 50px;
 }
-
+.profileText {
+  margin-left: -15px;
+}
 .deleteButton {
-  margin-top: -100px;
-  margin-left: -190px;
-  margin-right: 100px;
-  margin-bottom: -500px;
+  margin-left: 30px;
 }
 
 .update {

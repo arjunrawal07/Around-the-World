@@ -81,38 +81,40 @@ class Profile extends React.Component {
       return (
         <div className="profilePage">
           <div className="box" key={i}>
-            <ul>
-              <h1>Name: {profile.name}</h1>
-              <p>
-                <span>Capital: </span>
-                {profile.capital}
-              </p>
-              <p>
-                <span>Population: </span>
-                {profile.population}
-              </p>
-              <span>Currency: </span> <br />
+            <div className="profileText">
               <ul>
-                <li> Name: {profile.currencies[0]}</li>
+                <h1>Name: {profile.name}</h1>
+                <p>
+                  <span>Capital: </span>
+                  {profile.capital}
+                </p>
+                <p>
+                  <span>Population: </span>
+                  {profile.population}
+                </p>
+                <span>Currency: </span> <br />
+                <ul>
+                  <li> Name: {profile.currencies[0]}</li>
+                </ul>
+                <br></br>
+                <span>Languages: </span>
+                <ul>
+                  <li>{profile.languages}</li>
+                </ul>
               </ul>
-              <br></br>
-              <span>Languages: </span>
-              <ul>
-                <li>{profile.languages}</li>
-              </ul>
-            </ul>
-            <div className="deleteButton">
-              <Button
-                className="delete"
-                type="submit"
-                variant="contained"
-                onClick={this.deleteData}
-                color="secondary"
-                position="center"
-                margin="10px"
-              >
-                DELETE Country Profile
-              </Button>
+              <div className="deleteButton">
+                <Button
+                  className="delete"
+                  type="submit"
+                  variant="contained"
+                  onClick={this.deleteData}
+                  color="secondary"
+                  position="center"
+                  margin="10px"
+                >
+                  DELETE Country Profile
+                </Button>
+              </div>
             </div>
           </div>
           <div className="update">
