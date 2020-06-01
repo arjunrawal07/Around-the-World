@@ -40,12 +40,34 @@ class Profile extends React.Component {
       });
   }
   handleChange = (event) => {
+    console.log(event.target.value);
+    if (event.target.id == "name-input") {
+      this.setState({
+        name: event.target.value,
+      });
+    }
     if (event.target.id == "capital-input") {
       this.setState({
         capital: event.target.value,
       });
     }
+    if (event.target.id == "population-input") {
+      this.setState({
+        population: event.target.value,
+      });
+    }
+    if (event.target.id == "currencies-input") {
+      this.setState({
+        currencies: event.target.value.split(),
+      });
+    }
+    if (event.target.id == "languages-input") {
+      this.setState({
+        languages: event.target.value.split(),
+      });
+    }
   };
+
   deleteData = () => {
     const name = this.props.match.params.name;
     const profileURL = `${baseURL}${name}`;
@@ -65,11 +87,15 @@ class Profile extends React.Component {
     const profileURL = `${baseURL}${name}`;
     axios
       .put(profileURL, {
+        name: this.state.name,
         capital: this.state.capital,
+        currency: this.state.currency,
+        languages: this.state.languages,
       })
       .then((response) => {
         console.log(response);
       })
+
       .catch((error) => {
         console.log(error);
       });
