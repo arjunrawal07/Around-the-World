@@ -1,10 +1,11 @@
 .list {
   border: 5px solid black;
-  height: 100vw;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   column-count: 3;
+  column-gap: 0px;
   background-image: url("https://i.imgur.com/nFqUiOl.jpg");
-  background-size: cover;
+  background-size: auto;
   opacity: 0.8;
 }
 
@@ -13,8 +14,22 @@
   font-size: 25px;
 }
 
+.text {
+  color: white;
+  font-weight: bold;
+  opacity: 1;
+}
+
 a {
   color: black;
   font-weight: bold;
   opacity: 1;
+}
+
+@media only screen and (min-width: 300) {
+  .list {
+    width: 300px;
+    height: 600px;
+    column-count: 3;
+  }
 }

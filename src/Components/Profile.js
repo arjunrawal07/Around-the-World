@@ -29,11 +29,7 @@ class Profile extends React.Component {
           name: `${profile.name}`,
           capital: `${profile.capital}`,
           population: `${profile.population}`,
-          currencies: [
-            `${profile.currencies[0]}`,
-            `${profile.currencies[1]}`,
-            `${profile.currencies[2]}`,
-          ],
+          currencies: [`${profile.currencies[0]}`],
           languages: [`${profile.languages}`],
         }));
         this.props.setProfile(newProfile);
@@ -95,11 +91,9 @@ class Profile extends React.Component {
                 <span>Population: </span>
                 {profile.population}
               </p>
-              <span>Currencies: </span> <br />
+              <span>Currency: </span> <br />
               <ul>
                 <li> Name: {profile.currencies[0]}</li>
-                <li> Code: {profile.currencies[1]} </li>
-                <li> Symbol: {profile.currencies[2]}</li>
               </ul>
               <br></br>
               <span>Languages: </span>
@@ -115,6 +109,7 @@ class Profile extends React.Component {
                 onClick={this.deleteData}
                 color="secondary"
                 position="center"
+                margin="10px"
               >
                 DELETE Country Profile
               </Button>

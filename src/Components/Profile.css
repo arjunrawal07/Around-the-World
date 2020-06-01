@@ -9,14 +9,25 @@
   align-items: center;
   align-content: space-around;
 }
+
 .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+  align-items: center;
   border: 5px solid rgb(207, 95, 255);
   width: 300px;
+  height: 500px;
   margin-right: 20px;
+  padding: 50px;
 }
 
 .deleteButton {
-  margin: 0 50px;
+  margin-top: -100px;
+  margin-left: -190px;
+  margin-right: 100px;
+  margin-bottom: -500px;
 }
 
 .update {

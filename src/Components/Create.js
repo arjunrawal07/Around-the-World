@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Create.css";
 import { Route, Link } from "react-router-dom";
 import {
   FormControl,
@@ -83,60 +84,66 @@ class Create extends React.Component {
   render() {
     const { Name, Capital, Population, Currencies, Languages } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <FormControl>
-          <InputLabel htmlFor="name-input">Country Name</InputLabel>
-          <Input
-            id="name-input"
-            className="name-input"
-            aria-describedby="my-helper-text"
-            onChange={this.handleChange}
-          />{" "}
-          <FormControl>
-            <InputLabel htmlFor="capital-input">Capital City</InputLabel>
-            <Input
-              id="capital-input"
-              className="capital-input"
-              aria-describedby="my-helper-text"
-              onChange={this.handleChange}
-            />{" "}
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="population-input">
-              Country's Population
-            </InputLabel>
-            <Input
-              id="population-input"
-              className="population-input"
-              aria-describedby="my-helper-text"
-              onChange={this.handleChange}
-            />{" "}
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="currency-input">Country's Currency</InputLabel>
-            <Input
-              id="currency-input"
-              className="currencies-input"
-              aria-describedby="my-helper-text"
-              onChange={this.handleChange}
-            />{" "}
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="languages-input">
-              Country's Languages{" "}
-            </InputLabel>
-            <Input
-              id="languages-input"
-              className="languages-input"
-              aria-describedby="my-helper-text"
-              onChange={this.handleChange}
-            />{" "}
-          </FormControl>
-          <Button type="submit" variant="contained">
-            Create Country Profile
-          </Button>
-        </FormControl>
-      </form>
+      <div className="createPage">
+        <div className="box">
+          <form onSubmit={this.handleSubmit}>
+            <FormControl>
+              <InputLabel htmlFor="name-input">Country Name</InputLabel>
+              <Input
+                id="name-input"
+                className="name-input"
+                aria-describedby="my-helper-text"
+                onChange={this.handleChange}
+              />{" "}
+              <FormControl>
+                <InputLabel htmlFor="capital-input">Capital City</InputLabel>
+                <Input
+                  id="capital-input"
+                  className="capital-input"
+                  aria-describedby="my-helper-text"
+                  onChange={this.handleChange}
+                />{" "}
+              </FormControl>
+              <FormControl>
+                <InputLabel htmlFor="population-input">
+                  Country's Population
+                </InputLabel>
+                <Input
+                  id="population-input"
+                  className="population-input"
+                  aria-describedby="my-helper-text"
+                  onChange={this.handleChange}
+                />{" "}
+              </FormControl>
+              <FormControl>
+                <InputLabel htmlFor="currency-input">
+                  Country's Currency
+                </InputLabel>
+                <Input
+                  id="currency-input"
+                  className="currencies-input"
+                  aria-describedby="my-helper-text"
+                  onChange={this.handleChange}
+                />{" "}
+              </FormControl>
+              <FormControl>
+                <InputLabel htmlFor="languages-input">
+                  Country's Languages{" "}
+                </InputLabel>
+                <Input
+                  id="languages-input"
+                  className="languages-input"
+                  aria-describedby="my-helper-text"
+                  onChange={this.handleChange}
+                />{" "}
+              </FormControl>
+              <Button type="submit" variant="contained">
+                Create Country Profile
+              </Button>
+            </FormControl>
+          </form>
+        </div>
+      </div>
     );
   }
 }
