@@ -4,8 +4,8 @@
 Description: This full-stack MERN application allows users to access information on any country in the world. 
 
 ### Technologies Used: 
-Front End: React, CSS
-Back End: MongoDB, Express, Node.js
+* Front End: React, CSS
+* Back End: MongoDB, Express, Node.js
 
 ### Features:
 
