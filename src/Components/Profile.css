@@ -24,6 +24,12 @@
 .profileText {
   margin-left: -15px;
 }
+.requirements {
+  font-style: italic;
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
 .deleteButton {
   margin-left: 30px;
 }

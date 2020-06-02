@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import "./Profile.css";
 import { List, Button } from "@material-ui/core";
 import { FormControl, Input, InputLabel } from "@material-ui/core";
@@ -14,6 +15,7 @@ class Profile extends React.Component {
       population: 0,
       currencies: "",
       languages: "",
+      redirect: null,
     };
   }
   componentDidMount() {
@@ -80,9 +82,10 @@ class Profile extends React.Component {
       .catch((err) => {
         console.log(err);
       });
+    this.setState({ redirect: "/countries" });
   };
 
-  updateData = (event) => {
+  updateData = () => {
     const name = this.props.match.params.name;
     const profileURL = `${baseURL}${name}`;
     axios
@@ -102,7 +105,9 @@ class Profile extends React.Component {
   };
 
   render() {
-    console.log(this.props);
+    // if (this.state.redirect) {
+    //   return <Redirect to={this.state.redirect} />;
+    // }
     let dashboard = this.props.profiles.map((profile, i) => {
       return (
         <div className="profilePage">
@@ -145,6 +150,7 @@ class Profile extends React.Component {
           </div>
           <div className="update">
             <form onSubmit={this.updateData}>
+              <div className="requirements">* All fields required</div>
               <FormControl>
                 <InputLabel htmlFor="name-input">Country Name</InputLabel>
                 <Input

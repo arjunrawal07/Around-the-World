@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Create.css";
-import { Route, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import {
   FormControl,
   FormLabel,
@@ -16,11 +16,12 @@ class Create extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "Earth",
-      capital: "Washington",
-      population: 123,
-      currencies: ["Euro"],
-      languages: ["French"],
+      name: "",
+      capital: "",
+      population: 0,
+      currencies: [""],
+      languages: [""],
+      redirect: null,
     };
   }
   handleChange = (event) => {
@@ -79,9 +80,12 @@ class Create extends React.Component {
         console.log(error);
       }
     );
+    this.setState({ redirect: "/countries" });
   };
-
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     const { Name, Capital, Population, Currencies, Languages } = this.state;
     return (
       <div className="createPage">
