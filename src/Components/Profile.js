@@ -13,7 +13,7 @@ class Profile extends React.Component {
       name: "",
       capital: "",
       population: 0,
-      currencies: "",
+      currency: "",
       languages: "",
       redirect: null,
     };
@@ -31,7 +31,7 @@ class Profile extends React.Component {
           name: `${profile.name}`,
           capital: `${profile.capital}`,
           population: `${profile.population}`,
-          currencies: [`${profile.currencies[0]}`],
+          currency: [`${profile.currencies[0]}`],
           languages: [`${profile.languages}`],
         }));
         this.props.setProfile(newProfile);
@@ -58,9 +58,9 @@ class Profile extends React.Component {
         population: event.target.value,
       });
     }
-    if (event.target.id == "currencies-input") {
+    if (event.target.id == "currency-input") {
       this.setState({
-        currencies: event.target.value.split(),
+        currency: event.target.value.split(),
       });
     }
     if (event.target.id == "languages-input") {
@@ -92,7 +92,8 @@ class Profile extends React.Component {
       .put(profileURL, {
         name: this.state.name,
         capital: this.state.capital,
-        currency: this.state.currency,
+        population: this.state.population,
+        currencies: this.state.currency,
         languages: this.state.languages,
       })
       .then(this.setState({ redirect: `/countries/${this.state.name}` }))
@@ -107,7 +108,7 @@ class Profile extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/countries" />;
+      return <Redirect to={"/countries"} />;
     }
     let dashboard = this.props.profiles.map((profile, i) => {
       return (
@@ -124,15 +125,9 @@ class Profile extends React.Component {
                   <span>Population: </span>
                   {profile.population}
                 </p>
-                <span>Currency: </span> <br />
-                <ul>
-                  <li> Name: {profile.currencies[0]}</li>
-                </ul>
+                <span>Currency: </span> {profile.currency[0]} <br></br>
                 <br></br>
-                <span>Languages: </span>
-                <ul>
-                  <li>{profile.languages}</li>
-                </ul>
+                <span>Languages: </span> {profile.languages}
               </ul>
               <div className="deleteButton">
                 <Button
@@ -186,7 +181,7 @@ class Profile extends React.Component {
                   </InputLabel>
                   <Input
                     id="currency-input"
-                    className="currencies-input"
+                    className="currency-input"
                     aria-describedby="my-helper-text"
                     onChange={this.handleChange}
                   />{" "}

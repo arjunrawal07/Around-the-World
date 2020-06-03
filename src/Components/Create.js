@@ -19,7 +19,7 @@ class Create extends React.Component {
       name: "",
       capital: "",
       population: 0,
-      currencies: [""],
+      currency: [""],
       languages: [""],
       redirect: null,
     };
@@ -41,9 +41,9 @@ class Create extends React.Component {
         population: event.target.value,
       });
     }
-    if (event.target.id == "currencies-input") {
+    if (event.target.id == "currency-input") {
       this.setState({
-        currencies: event.target.value.split(),
+        currency: event.target.value.split(),
       });
     }
     if (event.target.id == "languages-input") {
@@ -68,7 +68,7 @@ class Create extends React.Component {
         name: this.state.name,
         capital: this.state.capital,
         population: this.state.population,
-        currencies: this.state.currencies,
+        currency: this.state.currency,
         languages: this.state.languages,
       },
     };
@@ -84,7 +84,7 @@ class Create extends React.Component {
   };
   render() {
     if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />;
+      return <Redirect to="/countries" />;
     }
     const { Name, Capital, Population, Currencies, Languages } = this.state;
     return (
@@ -125,7 +125,7 @@ class Create extends React.Component {
                 </InputLabel>
                 <Input
                   id="currency-input"
-                  className="currencies-input"
+                  className="currency-input"
                   aria-describedby="my-helper-text"
                   onChange={this.handleChange}
                 />{" "}
