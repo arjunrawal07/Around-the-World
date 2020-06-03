@@ -107,7 +107,7 @@ class Profile extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />;
+      return <Redirect to="/countries" />;
     }
     let dashboard = this.props.profiles.map((profile, i) => {
       return (
