@@ -80,11 +80,11 @@ class Create extends React.Component {
         console.log(error);
       }
     );
-    this.setState({ redirect: "/countries" });
+    this.setState({ redirect: `${this.state.name}` });
   };
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/countries" />;
+      return <Redirect to="/"></Redirect>;
     }
     const { Name, Capital, Population, Currencies, Languages } = this.state;
     return (
