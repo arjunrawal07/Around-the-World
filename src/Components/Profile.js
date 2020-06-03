@@ -95,6 +95,7 @@ class Profile extends React.Component {
         currency: this.state.currency,
         languages: this.state.languages,
       })
+      .then(this.setState({ redirect: `/countries/${this.state.name}` }))
       .then((response) => {
         console.log(response);
       })
@@ -105,9 +106,9 @@ class Profile extends React.Component {
   };
 
   render() {
-    // if (this.state.redirect) {
-    //   return <Redirect to={this.state.redirect} />;
-    // }
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     let dashboard = this.props.profiles.map((profile, i) => {
       return (
         <div className="profilePage">
