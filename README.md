@@ -3,7 +3,7 @@
 
 Description: This full-stack MERN application allows users to access information on any country in the world. 
 
-![Back-end/API Repo:](https://github.com/arjunrawal07/Around-the-World-API) 
+[Back-end/API Repo](https://github.com/arjunrawal07/Around-the-World-API) 
 
 ### Technologies Used: 
 * Front End: React, CSS
